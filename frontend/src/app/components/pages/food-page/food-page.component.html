@@ -1,7 +1,4 @@
-<app-not-found
-  [visible]="!food"
-  notFoundMessage="Food Not Found"
-  resetLinkText="Back To Homepage">
+<app-not-found [visible]="!food" notFoundMessage="Food Not Found" resetLinkText="Back To Homepage">
 </app-not-found>
 
 <div *ngIf="food" class="container">
@@ -16,14 +13,7 @@
         ❤
       </span>
     </div>
-    <!-- <star-rating
-      [value]="food.stars"
-      [totalstars]="5"
-      checkedcolor="red"
-      uncheckedcolor="black"
-      size="25px"
-      [readonly]="true">
-    </star-rating> -->
+    <star-rating [stars]="food.stars" />
 
     <div class="origins">
       <span *ngFor="let origin of food.origins">

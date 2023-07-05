@@ -13,10 +13,10 @@ export class TitleComponent implements OnInit {
   title!: string;
 
   @Input()
-  margin? = '1rem 0 1rem 0.2rem';
+  margin?= '1rem 0 1rem 0.2rem';
 
   @Input()
-  fontSize? = '1.7rem';
+  fontSize?= '1.7rem';
 
   ngOnInit(): void {
   }

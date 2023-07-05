@@ -3,21 +3,21 @@
     <a routerLink="/" class="logo">Food Shop!</a>
     <nav>
       <ul>
-        <li>
-           <a routerLink="/login">Login</a>
+        <li *ngIf="!isAuth">
+          <a routerLink="/login">Login</a>
         </li>
-        <li class="menu-container">
-           <a routerLink="/dashboard">Jack</a>
-           <div class="menu">
+        <li class="menu-container" *ngIf="isAuth">
+          <a routerLink="/dashboard">{{user.name}}</a>
+          <div class="menu">
             <a routerLink="/profile">Profile</a>
             <a routerLink="/orders">Orders</a>
-            <a>Logout</a>
-           </div>
+            <a (click)="logout()">Logout</a>
+          </div>
         </li>
         <li>
-            <a routerLink="/cart-page">
-              Cart <span *ngIf="cartQuantity">{{cartQuantity}}</span>
-            </a>
+          <a routerLink="/cart-page">
+            Cart <span *ngIf="cartQuantity">{{cartQuantity}}</span>
+          </a>
         </li>
       </ul>
     </nav>

@@ -32,8 +32,8 @@ export class CartService {
     let cartItem = this.cart.items.find(item => item.food.id === foodId);
     if (cartItem)
       cartItem.quantity = quantity;
-      cartItem!.price = quantity * cartItem!.food.price;
-      this.setCartToLocalStorage();
+    cartItem!.price = quantity * cartItem!.food.price;
+    this.setCartToLocalStorage();
   }
 
   clearCart(): void {
@@ -43,6 +43,10 @@ export class CartService {
 
   getCartObservable(): Observable<Cart> {
     return this.cartSubject.asObservable();
+  }
+
+  getCart(): Cart{
+    return this.cartSubject.value;
   }
 
   private setCartToLocalStorage(): void {

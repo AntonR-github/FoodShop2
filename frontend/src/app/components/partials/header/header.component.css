@@ -37,30 +37,30 @@ ul a {
   display: inline-block;
 }
 
-a span{
+a span {
   background: #ff4d4d;
   color: white;
   padding: 0.1rem 0.45rem;
   border-radius: 100rem;
-  font-size:0.9rem;
+  font-size: 0.9rem;
 }
 
-.menu-container{
+.menu-container {
   position: relative;
 }
 
-.menu{
-  position:absolute;
-  z-index:1;
-  background:whitesmoke;
+.menu {
+  position: absolute;
+  z-index: 1;
+  background: whitesmoke;
   display: none;
 }
 
-.menu-container:hover .menu{
+.menu-container:hover .menu {
   display: block;
 }
 
-.menu a{
+.menu a {
   width: 100%;
-  min-width:8rem;
+  min-width: 8rem;
 }
