@@ -26,4 +26,4 @@ export const UserSchema = new Schema<User>(
     timestamps: true,
 });
 
-export const userModel = model<User>("user", UserSchema);
+export const UserModel = model<User>("user", UserSchema);

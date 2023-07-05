@@ -3,7 +3,7 @@ import asyncHandler from 'express-async-handler';
 import { HTTP_BAD_REQUEST } from '../constants/http_status';
 import { OrderStatus } from '../constants/order_status';
 import { OrderModel } from '../models/order.model';
-// import auth from '../middlewares/auth.mid';
+import auth from '../middlewares/auth.mid';
 
 const router = Router();
 // router.use(auth);
@@ -17,17 +17,16 @@ asyncHandler(async (req:any, res:any) => {
         return;
     }
 
-    await OrderModel.deleteOne({
-        user: req.user.id,
-        status: OrderStatus.NEW
-    });
+    // await OrderModel.deleteOne({
+    //     user: req.user.id,
+    //     status: OrderStatus.NEW
+    // });
 
-    const newOrder = new OrderModel({...requestOrder,user: req.user.id});
+    const newOrder = new OrderModel({...requestOrder});
     await newOrder.save();
     res.send(newOrder);
 })
 )
-
 
 router.get('/newOrderForCurrentUser', asyncHandler( async (req:any,res ) => {
     const order= await getNewOrderForCurrentUser(req);
@@ -58,5 +57,7 @@ router.get('/track/:id', asyncHandler( async (req, res) => {
 export default router;
 
 async function getNewOrderForCurrentUser(req: any) {
-    return await OrderModel.findOne({ user: req.user.id, status: OrderStatus.NEW });
+    // return await OrderModel.findOne({ user: req.user.id, status: OrderStatus.NEW });
+    // find one order that is new and is the most recent one
+    return await OrderModel.findOne({ status: OrderStatus.NEW }).sort({ createdAt: -1  });
 }

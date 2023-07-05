@@ -3,7 +3,7 @@
     <a routerLink="/" class="logo">Food Shop!</a>
     <nav>
       <ul>
-        <li *ngIf="!isAuth">
+        <!-- <li *ngIf="!isAuth">
           <a routerLink="/login">Login</a>
         </li>
         <li class="menu-container" *ngIf="isAuth">
@@ -13,7 +13,7 @@
             <a routerLink="/orders">Orders</a>
             <a (click)="logout()">Logout</a>
           </div>
-        </li>
+        </li> -->
         <li>
           <a routerLink="/cart-page">
             Cart <span *ngIf="cartQuantity">{{cartQuantity}}</span>

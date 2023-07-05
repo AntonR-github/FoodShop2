@@ -33,4 +33,4 @@ export const FoodSchema = new Schema<Food>(
 }
 );
 
-export const foodModel = model<Food>("food", FoodSchema);
+export const FoodModel = model<Food>("food", FoodSchema);
