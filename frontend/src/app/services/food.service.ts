@@ -4,6 +4,7 @@ import { Tag } from '../shared/models/Tag';
 import { HttpClient } from '@angular/common/http';
 import { Observable } from 'rxjs';
 import { FOODS_BY_SEARCH_URL, FOODS_BY_TAG_URL, FOODS_URL, FOOD_BY_ID_URL } from './../shared/constants/urls';
+import { sample_foods, sample_tags } from '../../data';
 
 @Injectable({
   providedIn: 'root'
@@ -12,25 +13,70 @@ export class FoodService {
 
   constructor(private http: HttpClient) { }
 
+  // getAll(): Observable<Food[]> {
+  //   return this.http.get<Food[]>(FOODS_URL)
+  // }
+
+
   getAll(): Observable<Food[]> {
-    return this.http.get<Food[]>(FOODS_URL)
+    return new Observable<Food[]>(observer => {
+      observer.next(sample_foods);
+      observer.complete();
+    });
   }
+
+  // getAllFoodsBySearchTerm(searchTerm: string): Observable<Food[]> {
+  //   return this.http.get<Food[]>(FOODS_BY_SEARCH_URL + searchTerm)
+  // }
 
   getAllFoodsBySearchTerm(searchTerm: string): Observable<Food[]> {
-    return this.http.get<Food[]>(FOODS_BY_SEARCH_URL + searchTerm)
+    const foods = sample_foods.filter(food => food.name.toLowerCase().includes(searchTerm.toLowerCase()));
+    return new Observable<Food[]>(observer => {
+      observer.next(foods);
+      observer.complete();
+    }
+    );
   }
 
+  // getAllTags(): Observable<Tag[]> {
+  //   return this.http.get<Tag[]>(FOODS_BY_TAG_URL)
+  // }
+
   getAllTags(): Observable<Tag[]> {
-    return this.http.get<Tag[]>(FOODS_BY_TAG_URL)
+    const tags = sample_tags;
+    return new Observable<Tag[]>(observer => {
+      observer.next(tags);
+      observer.complete();
+    }
+    );
   }
+
+  // getAllFoodsByTag(tag: string): Observable<Food[]> {
+  //   return tag === 'All' ?
+  //     this.getAll() :
+  //     this.http.get<Food[]>(FOODS_BY_TAG_URL + tag)
+  // }
+
 
   getAllFoodsByTag(tag: string): Observable<Food[]> {
     return tag === 'All' ?
-      this.getAll() :
-      this.http.get<Food[]>(FOODS_BY_TAG_URL + tag)
+    this.getAll() :
+    new Observable<Food[]>(observer => {
+      observer.next(sample_foods.filter(food => food.tags.includes(tag)));
+      observer.complete();
+    }
+    );
   }
 
+  // getFoodById(foodId: string): Observable<Food> {
+  //   return this.http.get<Food>(FOOD_BY_ID_URL + foodId)
+  // }
+
   getFoodById(foodId: string): Observable<Food> {
-    return this.http.get<Food>(FOOD_BY_ID_URL + foodId)
+    return new Observable<Food>(observer => {
+      observer.next(sample_foods.find(food => food.id === foodId));
+      observer.complete();
+    }
+    );
   }
 }

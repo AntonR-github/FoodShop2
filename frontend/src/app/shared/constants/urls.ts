@@ -1,7 +1,7 @@
 import { environment } from "src/environments/environment";
 
 
-const BASE_URL = 'https://foodshop-api.onrender.com';
+const BASE_URL = environment.production? '' : 'http://localhost:5000';
 
 export const FOODS_URL = BASE_URL + '/api/foods';
 export const FOODS_TAGS_URL = FOODS_URL + '/tag';
