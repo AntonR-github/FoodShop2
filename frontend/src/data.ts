@@ -180,7 +180,7 @@ export const sample_foods: any[] = [
 ]
 
 export const sample_tags: any[] = [
-  { name: 'All', count: 6 },
+  { name: 'All', count: 10 },
   { name: 'Mexican', count: 1 },
   { name: 'American', count: 1 },
   { name: 'Japan', count: 2 },
