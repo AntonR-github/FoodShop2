@@ -13,7 +13,7 @@ const app = express();
 app.use(express.json());
 app.use(cors({
     credentials:true,
-    origin:["http://localhost:4200"]
+    // origin:["http://localhost:4200"]
 }));
 
 app.use("/api/foods", foodRouter);
@@ -22,6 +22,7 @@ app.use("/api/orders", orderRouter);
 
 app.use(express.static('public'));
 app.get('*', (req, res) => {
+    res.setHeader('Access-Control-Allow-Credentials', 'true')
     res.sendFile(path.join(__dirname,'public', 'index.html'))
 })
 
