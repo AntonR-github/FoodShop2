@@ -1,10 +1,9 @@
 import { environment } from "src/environments/environment";
 
 
-// const BASE_URL = environment.production? '' : 'http://localhost:5000';
-const BASE_URL = 'https://foodshop-hhyh.onrender.com';
+const BASE_URL = 'https://foodshop-api.onrender.com';
 
-export const FOODS_URL = BASE_URL + '/foods';
+export const FOODS_URL = BASE_URL + '/api/foods';
 export const FOODS_TAGS_URL = FOODS_URL + '/tag';
 export const FOODS_BY_SEARCH_URL = FOODS_URL + '/search/';
 export const FOODS_BY_TAG_URL = FOODS_URL + '/tag/';
